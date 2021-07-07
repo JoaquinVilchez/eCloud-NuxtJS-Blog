@@ -1,18 +1,38 @@
 <template>
     <div class="single-post-page">
         <section class="post">
-            <h1 class="post-title">Title</h1>
+            <h1 class="post-title">{{loadedPost.title}}</h1>
             <div class="post-details">
-                <div class="post-detail">Last updated on</div>
-                <div class="post-detail">Written by NAME</div>
+                <div class="post-detail">Last updated on {{loadedPost.updatedDate}}</div>
+                <div class="post-detail">Written by {{loadedPost.author}}</div>
             </div>
-            <div>Content of the post</div>
+            <div>{{loadedPost.content}}</div>
         </section>
         <section class="post-feedback">
             <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. <a href="mailto:joaquinvilchez95@gmail.com">joaquinvilchez95@gmail.com</a></p>
         </section>
     </div>
-</template>
+</template> 
+
+<script>
+export default {
+    asyncData(context, callback){
+        setTimeout(()=>{
+            callback(null, {
+                loadedPost:{
+                    id: "1", 
+                    title: 'My title - ID: '+context.route.params.id,
+                    previewText:'This is my preview text', 
+                    author:'Joaquin',
+                    updatedDate: new Date(),
+                    content:'Some text',
+                    thumbnail:'https://www.ngenespanol.com/wp-content/uploads/2018/08/La-primera-imagen-de-la-historia.jpg'
+                }
+            })
+        }, 1000)
+    }
+}
+</script>
 
 <style scoped>
     .post{

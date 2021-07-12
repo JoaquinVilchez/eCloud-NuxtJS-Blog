@@ -1,7 +1,7 @@
 <template>
     <div class="admin-new-post-page">
         <section class="new-post-form">
-            <AdminPostForm/>
+            <AdminPostForm @submit="onSubmitted"/>
         </section>
     </div>
 </template>
@@ -10,8 +10,15 @@
 import AdminPostForm from '@/components/admin/AdminPostForm';
 export default {
     layout:'admin',
+    middleware: ['check-auth','auth'],
     components:{
         AdminPostForm: AdminPostForm
+    },
+    methods:{
+      onSubmitted(postData){
+        this.$store.commit('addPost', postData)
+        this.$router.push('/')
+      }
     }
 }
 </script>

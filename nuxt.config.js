@@ -1,3 +1,5 @@
+const bodyParser = require('body-parser')
+
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -23,6 +25,8 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~plugins/core-components.js',
+    '~plugins/date-filter.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -34,9 +38,22 @@ export default {
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    '@nuxtjs/axios',
   ],
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-  }
+  },
+
+  env:{
+    baseUrl: process.env.BASE_URL || 'https://nuxt-blog-2906b-default-rtdb.firebaseio.com',
+    fbAPIKey: 'AIzaSyAOzaZ9WsAtXzV19dvH-OlQ6lJ83TIYbXs'
+  },
+
+  serverMiddleware:[
+    bodyParser.json(),
+    '~/api'
+  ],
+
+  ssr:true
 }

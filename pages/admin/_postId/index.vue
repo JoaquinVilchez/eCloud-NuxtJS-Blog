@@ -1,26 +1,22 @@
 <template>
     <div class="admin-post-page">
         <section class="update-form">
-            <AdminPostForm :post="loadedPost"/>
+            <AdminPostForm v-if="postData" :post="postData"/>
         </section>
     </div>
 </template>
-
+ 
 <script>
 import AdminPostForm from '@/components/admin/AdminPostForm'
 export default {
+  layout:'admin',
+    middleware: ['check-auth','auth'],
     components:{
         AdminPostForm: AdminPostForm
     },
-    layout:'admin',
-    data(){
-        return{
-            loadedPost:{
-                author:'Joaquin',
-                title:'Mi primer post',
-                content:'Contenido de mi post',
-                thumbnailLink:'https://www.gettyimages.es/gi-resources/images/500px/983794168.jpg'
-            }
+    computed:{
+        postData(){
+            return this.$store.getters.getPostByID(this.$route.params.postId)
         }
     }
 }

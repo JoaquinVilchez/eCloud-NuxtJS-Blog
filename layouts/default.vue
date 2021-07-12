@@ -13,6 +13,7 @@
 import TheHeader from '@/components/navigation/TheHeader.vue'
 import TheSidenav from '@/components/navigation/TheSidenav.vue'
 export default {
+    middleware: 'log',
     components:{
         TheHeader,
         TheSidenav

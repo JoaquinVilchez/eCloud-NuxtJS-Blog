@@ -1,8 +1,9 @@
 <template>
     <form @submit.prevent="onSave">
         <AppControlInput v-model="editedPost.author">Author Name</AppControlInput>
-        <AppContolInput v-model="editedPost.title">Title</AppContolInput>
+        <AppControlInput v-model="editedPost.title">Title</AppControlInput>
         <AppControlInput v-model="editedPost.thumbnailLink">Thumbnail link</AppControlInput>
+        <AppControlInput v-model="editedPost.previewText">Preview text</AppControlInput>
         <AppControlInput 
             control-type="textarea"
             v-model="editedPost.content">Content</AppControlInput>
@@ -17,13 +18,9 @@
 </template>
 
 <script>
-import AppControlInput from '@/components/UI/AppControlInput';
-import AppButton from '@/components/UI/AppButton';
 import AdminPostForm from '@/components/admin/AdminPostForm';
 export default {
     components:{
-        AppControlInput: AppControlInput,
-        AppButton: AppButton,
         AdminPostForm: AdminPostForm
     },
     props:{
@@ -34,20 +31,23 @@ export default {
     },
     data(){
         return{
-            editedPost: this.post 
-            ? {...this.post} 
-            : {
+            editedPost: {
                 author: '',
                 title:'',
                 thumbnailLink:'',
-                content:''
+                content:'',
+                previewText:''
             }
-            
+        }
+    },
+    mounted:function(){
+        if(this.post){
+            this.editedPost = this.post
         }
     },
     methods:{
         onSave(){
-            console.log(this.editedPost);
+            this.$emit('submit', this.editedPost)
         },
         onCancel(){
             this.$router.push('/admin')

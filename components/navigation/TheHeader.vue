@@ -21,7 +21,7 @@
 <script lang="ts">
   import Vue from 'vue'
   //FIXME: No se porque me da error en esa linea. Estimo que es configuracion de ts-config
-  import TheSideNavToggle from "~/components/navigation/TheSideNavToggle.vue";
+  import TheSideNavToggle from "@/components/navigation/TheSideNavToggle.vue";
   export default Vue.extend({
     name: "TheHeader",
     components: {

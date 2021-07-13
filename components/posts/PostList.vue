@@ -11,8 +11,7 @@
 
 <script lang="ts">
     import Vue from 'vue'
-  //FIXME: No se porque me da error en esa linea. Estimo que es configuracion de ts-config
-    import PostPreview from '~/components/Posts/PostPreview.vue'
+    import PostPreview from '@/components/Posts/PostPreview.vue'
     export default Vue.extend({
         components:{
             PostPreview: PostPreview

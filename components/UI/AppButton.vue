@@ -6,8 +6,9 @@
     v-on="$listeners"><slot /></button>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+import Vue from 'vue'
+export default Vue.extend({
   name: 'AppButton',
   props: {
     btnStyle: {
@@ -15,7 +16,7 @@ export default {
       default: ''
     }
   }
-}
+})
 </script>
 
 

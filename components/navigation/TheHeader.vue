@@ -17,15 +17,17 @@
 </div>
 </template>
 
-<script>
-import TheSideNavToggle from "@/components/Navigation/TheSideNavToggle";
 
-export default {
-  name: "TheHeader",
-  components: {
-    TheSideNavToggle
-  }
-};
+<script lang="ts">
+  import Vue from 'vue'
+  //FIXME: No se porque me da error en esa linea. Estimo que es configuracion de ts-config
+  import TheSideNavToggle from "~/components/navigation/TheSideNavToggle.vue";
+  export default Vue.extend({
+    name: "TheHeader",
+    components: {
+      TheSideNavToggle
+    }
+  });
 </script>
 
 

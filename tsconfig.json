@@ -8,12 +8,14 @@
         "ESNext.AsyncIterable",
         "DOM"
       ],
+      "experimentalDecorators": true,
       "esModuleInterop": true,
       "allowJs": true,
       "sourceMap": true,
       "strict": true,
       "noEmit": true,
       "baseUrl": ".",
+      "forceConsistentCasingInFileNames": false,
       "paths": {
         "~/*": ["./*"],
         "@/*": ["./*"]
@@ -25,5 +27,7 @@
     },
     "exclude": [
       "node_modules"
-    ]
+    ],
+    "include": ["**/*.ts", "**/*.vue"]
 }
+

@@ -5,11 +5,11 @@
 </template>
 
 <script>
-export default {
-  computed:{
-    loadedPosts(){
-      return this.$store.getters.loadedPosts
-    }
+
+import { Vue } from 'nuxt-property-decorator'
+export default class extends Vuex{
+  get loadedPosts(){
+    return this.$store.getters.post.loadedPosts
   }
 }
 </script> 

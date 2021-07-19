@@ -8,13 +8,12 @@
 </template>
 
 <script>
-export default {
-  computed:{
+import { Vue } from 'nuxt-property-decorator'
+export default class extends Vue{
     loadedPosts(){
-      return this.$store.getters.loadedPosts
+      this.$store.dispatch(`post/getPosts`)
     }
   }
-}
 </script> 
 
 <style scoped>

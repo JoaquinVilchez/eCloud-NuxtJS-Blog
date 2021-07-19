@@ -20,12 +20,13 @@
 <script lang="ts">
 import Vue, { PropOptions } from 'vue'
 
-interface Post{
-    author: string
-    title: string
-    thumbnailLink: string
-    content: string
-    previewText: string
+interface Post {
+    id:String,
+    author:String,
+    title:String,
+    thumbnailLink:String,
+    previewText:String,
+    content:String
 }
 
 export default Vue.extend({
@@ -41,11 +42,12 @@ export default Vue.extend({
     data(){
         return{
             editedPost: <Post> {
+                id: '10',
                 author: '',
                 title:'',
                 thumbnailLink:'',
-                content:'',
-                previewText:''
+                previewText:'',
+                content:''
             }
         }
     },

@@ -17,29 +17,30 @@
 </template>
 
 <script>
+import { Component, Vue } from 'nuxt-property-decorator'
 
-export default {
+@Component({
   layout:'admin',
   name: 'AdminAuthPage',
-  layout: 'admin',
-  data() {
-    return {
-      isLogin: true,
-      email: '',
-      password: ''
-    }
-  },
-  methods:{
-    onSubmit(){
-        this.$store.dispatch('authenticateUser',{
-          isLogin: this.isLogin,
-          email: this.email,
-          password: this.password,
-        })
-        .then(()=>{
-          this.$router.push('/admin')
-        })
-    }
+  layout: 'admin'
+})
+
+export default class extends Vue {
+  authData = {
+    isLogin: true,
+    email: '',
+    password: ''
+  }
+
+  onSubmit(){
+    this.$store.dispatch('auth/authenticateUser',{
+      isLogin: this.authData.isLogin,
+      email: this.authData.email,
+      password: this.authData.password,
+    })
+    .then(()=>{
+      this.$router.push('/admin')
+    })
   }
 }
 </script>

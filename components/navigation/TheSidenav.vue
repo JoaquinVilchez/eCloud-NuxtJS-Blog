@@ -20,16 +20,17 @@
 </div>
 </template>
 
-<script>
-export default {
-  name: "TheSidenav",
-  props: {
-    show: {
-      type: Boolean,
-      default: false
+<script lang="ts">
+  import Vue from 'vue'
+  export default Vue.extend({
+    name: "TheSidenav",
+    props: {
+      show: {
+        type: Boolean,
+        default: false
+      }
     }
-  }
-};
+  })
 </script>
 
 

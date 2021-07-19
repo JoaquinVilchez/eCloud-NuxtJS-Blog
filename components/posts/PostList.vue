@@ -4,32 +4,30 @@
             v-for="post in posts"
             :key="post.id"
             :is-admin="isAdmin" 
-            :id="post.id" 
-            :thumbnail="post.thumbnail"
-            :title="post.title"
-            :previewText="post.previewText"
+            :post="post"
         />
     </section>
 </template>
 
-<script>
-import PostPreview from '@/components/Posts/PostPreview'
-export default {
-  components:{
-    PostPreview: PostPreview
-  },
-  props:{
-      isAdmin: {
-          type:Boolean,
-          default:false
-      },
-      posts:{
-          type:Array,
-          required:true,
-      }
-  }
-}
-</script> 
+<script lang="ts">
+    import Vue from 'vue'
+    import PostPreview from '@/components/Posts/PostPreview.vue'
+    export default Vue.extend({
+        components:{
+            PostPreview: PostPreview
+        },
+        props:{
+            isAdmin: {
+                type:Boolean,
+                default:false
+            },
+            posts:{
+                type:Array,
+                required:true,
+            }
+        }
+    })
+</script>
 
 <style scoped>
     .post-list {

@@ -17,34 +17,47 @@
     </form>
 </template>
 
-<script>
-import AdminPostForm from '@/components/admin/AdminPostForm';
-export default {
-    components:{
-        AdminPostForm: AdminPostForm
-    },
+<script lang="ts">
+import Vue, { PropOptions } from 'vue'
+
+interface Post {
+    id:String,
+    author:String,
+    title:String,
+    thumbnailLink:String,
+    previewText:String,
+    content:String
+}
+
+export default Vue.extend({
+    name: 'AdminPostForm',
+
     props:{
         post:{
             type: Object,
             required: false
-        }
+        } as PropOptions<Post>
     },
+
     data(){
         return{
-            editedPost: {
+            editedPost: <Post> {
+                id: '10',
                 author: '',
                 title:'',
                 thumbnailLink:'',
-                content:'',
-                previewText:''
+                previewText:'',
+                content:''
             }
         }
     },
+
     mounted:function(){
         if(this.post){
             this.editedPost = this.post
         }
     },
+
     methods:{
         onSave(){
             this.$emit('submit', this.editedPost)
@@ -53,5 +66,5 @@ export default {
             this.$router.push('/admin')
         }
     }
-}
+})
 </script>

@@ -7,19 +7,24 @@
 </template>
 
 <script>
+import { Component, Vue } from 'nuxt-property-decorator'
 import AdminPostForm from '@/components/admin/AdminPostForm';
-export default {
-    layout:'admin',
+
+@Component({
+layout:'admin',
     middleware: ['check-auth','auth'],
     components:{
-        AdminPostForm: AdminPostForm
+        AdminPostForm
     },
-    methods:{
-      onSubmitted(postData){
-        this.$store.commit('addPost', postData)
-        this.$router.push('/')
-      }
-    }
+})
+
+export default class extends Vuex{
+
+  onSubmitted(postData){
+    this.$store.commit('post/addPost', postData)
+    this.$router.push('/')
+  }
+
 }
 </script>
 

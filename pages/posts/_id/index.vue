@@ -15,11 +15,10 @@
 </template> 
 
 <script>
-export default {
-    computed:{
-        postData(){
-            return this.$store.getters.getPostByID(this.$route.params.id)
-        }
+import { Vue } from 'nuxt-property-decorator'
+export default class extends Vuex{
+    get postData(){
+        return this.$store.getters.post.getPostByID(this.$route.params.id)
     }
 }
 </script>

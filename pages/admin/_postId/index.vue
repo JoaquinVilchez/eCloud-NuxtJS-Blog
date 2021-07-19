@@ -7,18 +7,21 @@
 </template>
  
 <script>
+import { Component, Vue } from 'nuxt-property-decorator'
 import AdminPostForm from '@/components/admin/AdminPostForm'
-export default {
+
+@Component({
   layout:'admin',
-    middleware: ['check-auth','auth'],
-    components:{
-        AdminPostForm: AdminPostForm
-    },
-    computed:{
-        postData(){
-            return this.$store.getters.getPostByID(this.$route.params.postId)
-        }
-    }
+  middleware: ['check-auth','auth'],
+  components:{
+      AdminPostForm
+  },
+})
+
+export default class extends Vue {
+  get postData(){
+      return this.$store.getters.post.getPostByID(this.$route.params.postId)
+  }
 }
 </script>
 

@@ -2,46 +2,35 @@
     <nuxt-link :to="postLink" class="post-preview">
         <article>
             <div class="post-thumbnail" 
-                :style="{backgroundImage: 'url('+thumbnail+')'}"></div>
+                :style="{backgroundImage: 'url('+post.thumbnail+')'}"></div>
             <div class="post-content">
-            <h1>{{title}}</h1>
-            <p>{{previewText}}</p>
+            <h1>{{post.title}}</h1>
+            <p>{{post.previewText}}</p>
             </div>
         </article>
     </nuxt-link>
 </template>
 
-<script>
-export default {
+<script lang="ts">
+  import Vue from 'vue'
+  export default Vue.extend({
     name: 'PostPreview',
     props:{
-        id: {
-            type: String,
-            required: true, 
-        },
         isAdmin:{
             type:Boolean,
             required: true,
-        },   
-        title:{
-            type: String,
-            required: true,
         },
-        previewText:{
-            type:String,
-            required:true,
-        },
-        thumbnail:{
-            type:String,
+        post:{
+            type:Object,
             required:true,
         }
     },
     computed:{
-        postLink(){
-            return this.isAdmin ? '/admin/'+this.id : '/posts/'+this.id
+        postLink():string{
+            return this.isAdmin ? '/admin/'+this.post.id : '/posts/'+this.post.id
         }
     }
-}
+  })
 </script>
 
 <style scoped>

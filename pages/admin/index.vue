@@ -12,19 +12,21 @@
 </template>
 
 <script>
-export default {
+
+import { Component, Vue } from 'nuxt-property-decorator'
+@Component({
   layout:'admin',
-  middleware: ['check-auth','auth'],
-  computed:{
-    loadedPosts(){
-      return this.$store.getters.loadedPosts
-    }
-  },
-  methods:{
-    onLogout(){
-      this.$store.dispatch('logout')
-      this.$router.push('/admin/auth')
-    }
+  middleware: ['check-auth','auth']
+})
+
+
+export default class extends Vuex{
+  get loadedPosts(){
+    return this.$store.getters.post.loadedPosts
+  }
+  onLogout(){
+    this.$store.dispatch('auth/logout')
+    this.$router.push('/admin/auth')
   }
 }
 </script>

@@ -18,7 +18,7 @@ layout:'admin',
     },
 })
 
-export default class extends Vuex{
+export default class extends Vue{
 
   onSubmitted(postData){
     this.$store.commit('post/addPost', postData)

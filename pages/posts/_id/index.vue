@@ -16,7 +16,7 @@
 
 <script>
 import { Vue } from 'nuxt-property-decorator'
-export default class extends Vuex{
+export default class extends Vue{
     get postData(){
         return this.$store.getters.post.getPostByID(this.$route.params.id)
     }

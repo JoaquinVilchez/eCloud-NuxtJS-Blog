@@ -20,7 +20,7 @@ import { Component, Vue } from 'nuxt-property-decorator'
 })
 
 
-export default class extends Vuex{
+export default class extends Vue{
   get loadedPosts(){
     return this.$store.getters.post.loadedPosts
   }
